@@ -4,8 +4,6 @@ Este projeto foi desenvolvido como parte de um trabalho acadêmico da disciplina
 
 ## Objetivo
 
-O trabalho consiste em:
-
 - Implementar uma Rede Neural Artificial do tipo Convolutional Neural Network (CNN) com múltiplas camadas ocultas e uma camada densa ao final.
 - Realizar dois tipos de tarefas de classificação utilizando o conjunto de dados MNIST:
   - **Classificação Multiclasse:** A rede deve ser capaz de identificar corretamente os 10 dígitos (0 a 9) do MNIST.
@@ -29,6 +27,10 @@ Durante o desenvolvimento, o projeto gera os seguintes arquivos de saída:
 - Arquivo com o erro da rede em cada época (loss curve).
 - Arquivo com as predições realizadas pela rede no conjunto de teste.
 
+## Versão do Python
+
+- Python 3.10
+
 ## Bibliotecas Utilizadas
 
 - TensorFlow / Keras
@@ -39,6 +41,6 @@ Durante o desenvolvimento, o projeto gera os seguintes arquivos de saída:
 
 ## Fonte dos Dados
 
-O conjunto MNIST está disponível em:
+Conjunto MNIST, disponível em:
 
 - [TensorFlow Datasets - MNIST](https://www.tensorflow.org/datasets/catalog/mnist?hl=pt-br)
