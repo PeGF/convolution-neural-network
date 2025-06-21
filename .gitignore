@@ -1,1 +1,10 @@
 venv/
+models/
+outputs/
+src/__pycache__/
+
+# Dados temporários
+*.h5
+*.keras
+*.ckpt
+*.log

@@ -4,8 +4,7 @@ import numpy as np
 import tensorflow as tf
 from keras.datasets import mnist
 from sklearn.model_selection import train_test_split
-from descriptors import extract_hog, extract_lbp, extract_haar
-from keras.datasets import mnist
+from src.descriptors import extract_hog, extract_lbp, extract_haar
 from src.config import BINARY_CLASSES, RANDOM_SEED
 
 
@@ -14,7 +13,7 @@ def load_mnist_data():
     Carrega o dataset MNIST diretamente do TensorFlow.
     Retorna os dados de treino e teste, ainda sem pré-processamento.
     """
-    (x_train, y_train), (x_test, y_test) = mnist.mnist.load_data()
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
     return (x_train, y_train), (x_test, y_test)
 
 

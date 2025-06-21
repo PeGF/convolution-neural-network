@@ -37,7 +37,7 @@ def save_model_outputs(model, x_test, filename):
     np.savez_compressed(filename, outputs=outputs)
 
 
-def train_task(mode="multiclass"):
+def train_task(mode):
     """
     Executa o treinamento da CNN.
     
