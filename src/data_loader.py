@@ -4,6 +4,8 @@ import numpy as np
 import tensorflow as tf
 from keras.datasets import mnist
 from sklearn.model_selection import train_test_split
+from descriptors import extract_hog, extract_lbp, extract_haar
+from keras.datasets import mnist
 from src.config import BINARY_CLASSES, RANDOM_SEED
 
 
@@ -82,6 +84,30 @@ def prepare_binary_data(class_a=BINARY_CLASSES[0], class_b=BINARY_CLASSES[1]):
 
     return (x_train, y_train), (x_test, y_test)
 
+def load_data_with_descriptors(descriptor):
+    '''
+    Carrega o dataset MNIST e aplica o descritor especificado.
+    '''
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+    # Normalização para 0-1 (necessário para alguns descritores)
+    x_train = x_train.astype("float32") / 255.0
+    x_test = x_test.astype("float32") / 255.0
+
+    # Aplicação do descritor escolhido
+    if descriptor == "hog":
+        x_train_feat = extract_hog(x_train)
+        x_test_feat = extract_hog(x_test)
+    elif descriptor == "lbp":
+        x_train_feat = extract_lbp(x_train)
+        x_test_feat = extract_lbp(x_test)
+    elif descriptor == "haar":
+        x_train_feat = extract_haar(x_train)
+        x_test_feat = extract_haar(x_test)
+    else:
+        raise ValueError("Descritor não reconhecido. Use 'hog', 'lbp' ou 'haar'.")
+
+    return (x_train_feat, y_train), (x_test_feat, y_test)
 
 def split_train_validation(x, y, validation_size=0.1):
     """
