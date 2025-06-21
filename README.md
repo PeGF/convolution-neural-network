@@ -1,6 +1,6 @@
 # Classificação de Dígitos com Redes Neurais Convolucionais (CNN)
 
-Este projeto foi desenvolvido como parte de um trabalho acadêmico da disciplina de Inteligência Artificial, com o objetivo de implementar e treinar uma Rede Neural Convolucional (CNN) utilizando o framework TensorFlow/Keras.
+Este projeto foi desenvolvido como parte de um trabalho acadêmico da disciplina de Inteligência Artificial do curso de Sistemas de Informação (USP), com o objetivo de implementar e treinar uma Rede Neural Convolucional (CNN) utilizando o framework TensorFlow/Keras.
 
 ## Objetivo
 
