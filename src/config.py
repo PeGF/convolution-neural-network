@@ -3,8 +3,11 @@ Hiperparâmetros da CNN
 '''
 
 BATCH_SIZE = 128
-EPOCHS = 15
+NUM_EPOCHS = 15
 LEARNING_RATE = 0.001
+
+# Diretório de saída
+OUTPUT_DIR = "outputs"
 
 # Arquitetura da CNN
 CNN_CONFIG = {
@@ -18,11 +21,9 @@ CNN_CONFIG = {
         {"filters": 64, "kernel_size": (3, 3), "activation": "relu"}
     ],
 
-    # Definição da camada densa final
-    "dense_units": 128,
+    "dense_units": 128, # Definição da camada densa final
 
-    # Dropout para regularização
-    "dropout_rate": 0.5,
+    "dropout_rate": 0.5, # Dropout para regularização
 }
 
 '''
