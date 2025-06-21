@@ -1,48 +1,27 @@
-'''
-Hiperparâmetros da CNN
-'''
+# Dados
+DATASET_NAME = "MNIST"
+INPUT_SHAPE = (28, 28, 1)  # Formato das imagens do MNIST
 
+
+# Hiperparâmetros da Rede
 BATCH_SIZE = 128
-NUM_EPOCHS = 15
+NUM_EPOCHS = 10
 LEARNING_RATE = 0.001
 
-# Diretório de saída
+# Número de classes
+NUM_CLASSES = 10  # Multiclasse 0 a 9
+# Binário está definido na main como 1
+
+# Diretórios de saída
 OUTPUT_DIR = "outputs"
+WEIGHTS_INITIAL_FILE = f"{OUTPUT_DIR}/initial_weights.h5"
+WEIGHTS_FINAL_FILE = f"{OUTPUT_DIR}/final_weights.h5"
+ERROR_LOG_FILE = f"{OUTPUT_DIR}/error_log.csv"
+OUTPUTS_FILE = f"{OUTPUT_DIR}/outputs.csv"
+PLOTS_DIR = f"{OUTPUT_DIR}/plots"
 
-# Arquitetura da CNN
-CNN_CONFIG = {
-    "input_shape": (28, 28, 1),  # Formato da imagem do MNIST
-    "num_classes_multiclass": 10,
-    "num_classes_binary": 2,
-    
-    # Definição das camadas convolucionais
-    "conv_layers": [
-        {"filters": 32, "kernel_size": (3, 3), "activation": "relu"},
-        {"filters": 64, "kernel_size": (3, 3), "activation": "relu"}
-    ],
+# Descritores
+USE_DESCRIPTORS = False  # False -> imagens brutas | True -> descritores
+DESCRIPTOR_TYPE = "hog"  # Opções: 'hog', 'lbp', 'haar'
 
-    "dense_units": 128, # Definição da camada densa final
-
-    "dropout_rate": 0.5, # Dropout para regularização
-}
-
-'''
-Parametros
-'''
-
-RANDOM_SEED = 42 
-
-# Classes do MNIST
-BINARY_CLASSES = (3, 8) # Trocar dps para testar
-
-'''
-Pastas pra salvar arquivos
-'''
-
-PATHS = {
-    "models": "./models/",
-    "outputs": "./outputs/",
-    "logs": "./outputs/logs/",
-    "plots": "./outputs/plots/",
-    "predictions": "./outputs/predictions/"
-}
+RANDOM_STATE = 42 
