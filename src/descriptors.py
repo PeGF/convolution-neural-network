@@ -1,10 +1,11 @@
 # descriptors.py
 
+from cv2 import resize
 import numpy as np
 from skimage.feature import hog, local_binary_pattern
 from skimage import exposure
 import pywt
-import cv2
+import numpy as np
 
 
 # ==========================
@@ -25,8 +26,9 @@ def extract_hog(images, pixels_per_cell=(8, 8), cells_per_block=(2, 2), orientat
     """
     hog_features = []
     for img in images:
+        img_resized = resize(img, (28, 28))
         feature = hog(
-            img,
+            img_resized,
             orientations=orientations,
             pixels_per_cell=pixels_per_cell,
             cells_per_block=cells_per_block,
@@ -54,7 +56,8 @@ def extract_lbp(images, P=8, R=1):
     """
     lbp_features = []
     for img in images:
-        lbp = local_binary_pattern(img, P, R, method="uniform")
+        img_resized = resize(img, (28, 28))
+        lbp = local_binary_pattern(img_resized, P, R, method="uniform")
         (hist, _) = np.histogram(lbp.ravel(),
                                  bins=np.arange(0, P + 3),
                                  range=(0, P + 2))
@@ -79,7 +82,8 @@ def extract_haar(images):
     """
     haar_features = []
     for img in images:
-        coeffs = pywt.dwt2(img, 'haar')
+        img_resized = resize(img, (28, 28))
+        coeffs = pywt.dwt2(img_resized, 'haar')
         cA, (cH, cV, cD) = coeffs
         haar_features.append(cA.flatten())  # Usamos apenas a aproximação
     return np.array(haar_features)

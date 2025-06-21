@@ -2,8 +2,34 @@
 
 import tensorflow as tf
 from keras import layers, models, optimizers
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
 from src.config import CNN_CONFIG, LEARNING_RATE
 
+
+def create_mlp(input_shape, num_classes):
+    """
+    Cria um modelo MLP para dados com descritores.
+
+    Args:
+        input_shape (int): Tamanho do vetor de entrada.
+        num_classes (int): Número de classes.
+
+    Returns:
+        Modelo compilado.
+    """
+    model = Sequential()
+    model.add(Dense(512, activation='relu', input_shape=(input_shape,)))
+    model.add(Dropout(0.3))
+    model.add(Dense(256, activation='relu'))
+    model.add(Dropout(0.3))
+    model.add(Dense(num_classes, activation='softmax' if num_classes > 2 else 'sigmoid'))
+
+    loss = 'sparse_categorical_crossentropy' if num_classes > 2 else 'binary_crossentropy'
+    model.compile(optimizer='adam',
+                  loss=loss,
+                  metrics=['accuracy'])
+    return model
 
 def build_cnn_model(num_classes):
     """
