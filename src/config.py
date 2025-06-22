@@ -13,9 +13,9 @@ CNN_CONFIG = {
     "activation": "relu"
 }
 
-# Hiperparâmetros da Rede
+# Hiperparâmetros
 BATCH_SIZE = 128
-NUM_EPOCHS = 20
+NUM_EPOCAS = 20
 LEARNING_RATE = 0.001
 
 # Número de classes
@@ -38,16 +38,12 @@ CLASS_NAMES = [
 ]
 BINARY_CLASSES = (0, 6)
 
-# Diretórios de saída
+# Pastas de saída
 OUTPUT_DIR = "outputs"
 WEIGHTS_INITIAL_FILE = f"{OUTPUT_DIR}/initial_weights.h5"
 WEIGHTS_FINAL_FILE = f"{OUTPUT_DIR}/final_weights.h5"
 ERROR_LOG_FILE = f"{OUTPUT_DIR}/error_log.csv"
 OUTPUTS_FILE = f"{OUTPUT_DIR}/outputs.csv"
 PLOTS_DIR = f"{OUTPUT_DIR}/plots"
-
-# Descritores
-USE_DESCRIPTORS = False  # False -> imagens brutas | True -> descritores
-DESCRIPTOR_TYPE = "hog"  # Opções: 'hog', 'lbp', 'haar'
 
 RANDOM_SEED = 42  # Reprodutibilidade

@@ -39,18 +39,18 @@ def train_task(mode):
     """
     Executa o treinamento da CNN.
     
-    Parâmetros:
-    - mode: 'multiclass' ou 'binary'
+    Parâ^metro:
+    - mode: 'Multiclass' ou 'Binary'
     """
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     '''
     Dados
     '''
-    if mode == "multiclass":
+    if mode == "Multiclass":
         (x_train, y_train), (x_test, y_test) = prepare_multiclass_data()
         num_classes = NUM_CLASSES_MULTICLASS
-    elif mode == "binary":
+    elif mode == "Binary":
         (x_train, y_train), (x_test, y_test) = prepare_binary_data()
         num_classes = NUM_CLASSES_BINARY
     else:
@@ -74,7 +74,7 @@ def train_task(mode):
     '''
     history = model.fit(
         x_train, y_train,
-        epochs=NUM_EPOCHS,
+        epochs=NUM_EPOCAS,
         batch_size=BATCH_SIZE,
         validation_data=(x_val, y_val),
         verbose=2
@@ -104,4 +104,4 @@ def train_task(mode):
     outputs_file = os.path.join(OUTPUT_DIR, f"{mode}_test_outputs.npz")
     save_model_outputs(model, x_test, outputs_file)
 
-    print(f"Treinamento ({mode}) concluído. Arquivos salvos em {OUTPUT_DIR}.")
+    print(f"Treinamento {mode} concluído. Arquivos salvos na pasta {OUTPUT_DIR}.")

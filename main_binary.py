@@ -8,13 +8,13 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Treinamento
-    history_bin = train_task(mode="binary")
+    history_bin = train_task(mode="Binary")
 
     # Avaliação
-    history_bin = load_training_log('binary')
-    plot_training_curves(history_bin, 'binary')
+    history_bin = load_training_log('Binary')
+    plot_training_curves(history_bin, 'Binary')
     # class_a e class_b são carregados do config ou passados aqui
-    evaluate_model('binary', *BINARY_CLASSES)
+    evaluate_model('Binary', *BINARY_CLASSES)
 
 
 if __name__ == "__main__":
