@@ -1,6 +1,6 @@
 venv/
-models/
 outputs/
+output_testes/
 src/__pycache__/
 
 # Dados temporários

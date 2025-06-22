@@ -1,6 +1,5 @@
 # Dados
-DATASET_NAME = "MNIST"
-INPUT_SHAPE = (28, 28, 1)  # Formato das imagens do MNIST
+DATASET_NAME = "FASHION_MNIST"
 
 CNN_CONFIG = {
     "input_shape": (28, 28, 1),
@@ -16,13 +15,24 @@ CNN_CONFIG = {
 
 # Hiperparâmetros da Rede
 BATCH_SIZE = 128
-NUM_EPOCHS = 50
+NUM_EPOCHS = 20
 LEARNING_RATE = 0.001
 
 # Número de classes
-NUM_CLASSES = 10  # Multiclasse 0 a 9
-# Binário está definido na main como 1
-BINARY_CLASSES = (6, 1)  # Classes para classificação binária
+NUM_CLASSES_MULTICLASS = 10  # Multiclasse 0 a 9
+NUM_CLASSES_BINARY = 2  # Binário: 2 classes (sempre 2, obviamente)
+
+# 0 - T-shirt/top
+# 1 - Trouser
+# 2 - Pullover
+# 3 - Dress
+# 4 - Coat
+# 5 - Sandal
+# 6 - Shirt
+# 7 - Sneaker
+# 8 - Bag
+# 9 - Ankle boot
+BINARY_CLASSES = (0, 6)
 
 # Diretórios de saída
 OUTPUT_DIR = "outputs"

@@ -1,5 +1,3 @@
-# src/train.py
-
 import os
 import numpy as np
 import tensorflow as tf
@@ -11,7 +9,7 @@ from src.data_loader import (
     split_train_validation
 )
 from src.model_builder import build_cnn_model
-from src.config import OUTPUT_DIR, NUM_EPOCHS, BATCH_SIZE
+from src.config import *
 
 
 def save_weights(model, filename):
@@ -51,10 +49,10 @@ def train_task(mode):
     '''
     if mode == "multiclass":
         (x_train, y_train), (x_test, y_test) = prepare_multiclass_data()
-        num_classes = 10
+        num_classes = NUM_CLASSES_MULTICLASS
     elif mode == "binary":
         (x_train, y_train), (x_test, y_test) = prepare_binary_data()
-        num_classes = 2
+        num_classes = NUM_CLASSES_BINARY
     else:
         raise ValueError("Modo inválido. Use 'multiclass' ou 'binary'.")
 

@@ -1,5 +1,3 @@
-# src/model_builder.py
-
 import tensorflow as tf
 from keras import layers, models, optimizers
 from keras.models import Sequential

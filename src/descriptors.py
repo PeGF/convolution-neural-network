@@ -1,5 +1,3 @@
-# descriptors.py
-
 from cv2 import resize
 import numpy as np
 from skimage.feature import hog, local_binary_pattern
