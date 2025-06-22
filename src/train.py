@@ -54,7 +54,7 @@ def train_task(mode):
         num_classes = 10
     elif mode == "binary":
         (x_train, y_train), (x_test, y_test) = prepare_binary_data()
-        num_classes = 2
+        num_classes = 1
     else:
         raise ValueError("Modo inválido. Use 'multiclass' ou 'binary'.")
 
@@ -87,6 +87,12 @@ def train_task(mode):
     '''
     final_weights_file = os.path.join(OUTPUT_DIR, f"{mode}_final_weights.npz")
     save_weights(model, final_weights_file)
+
+    '''
+    Salva o modelo completo
+    '''
+    model_save_path = os.path.join(OUTPUT_DIR, f"{mode}_model.keras")
+    model.save(model_save_path)
 
     '''
     Salva logs de treinamento

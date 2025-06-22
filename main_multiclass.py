@@ -9,19 +9,6 @@ import os
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # 🔸 Escolha se quer usar descritores ou imagens cruas
-    USE_DESCRIPTORS = False  # 👉 Altere para True se quiser usar HOG, LBP ou Haar
-    DESCRIPTOR_TYPE = 'hog'  # 'hog', 'lbp' ou 'haar'
-
-    if USE_DESCRIPTORS:
-        (x_train, y_train), (x_test, y_test) = load_data_with_descriptors(descriptor=DESCRIPTOR_TYPE)
-        input_shape = x_train.shape[1]
-        model = create_mlp(input_shape=input_shape, num_classes=NUM_CLASSES)
-    else:
-        (x_train, y_train), (x_test, y_test) = load_mnist_data()
-        input_shape = x_train.shape[1:]  # (28, 28, 1)
-        model = build_cnn_model(num_classes=NUM_CLASSES)
-
     # Treinamento
     history = train_task(mode="multiclass")
 
