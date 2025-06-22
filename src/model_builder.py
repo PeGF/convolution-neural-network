@@ -35,7 +35,7 @@ def build_cnn_model(num_classes):
     """
     Cria uma CNN com base nas configurações definidas em config.py.
 
-    Parâmetros:
+    Parâmetro:
     - num_classes: número de classes da saída (10 para multiclasse, 2 para binário)
 
     Retorna:

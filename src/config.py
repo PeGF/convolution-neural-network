@@ -16,7 +16,7 @@ CNN_CONFIG = {
 
 # Hiperparâmetros da Rede
 BATCH_SIZE = 128
-NUM_EPOCHS = 2
+NUM_EPOCHS = 50
 LEARNING_RATE = 0.001
 
 # Número de classes

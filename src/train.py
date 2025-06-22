@@ -54,7 +54,7 @@ def train_task(mode):
         num_classes = 10
     elif mode == "binary":
         (x_train, y_train), (x_test, y_test) = prepare_binary_data()
-        num_classes = 1
+        num_classes = 2
     else:
         raise ValueError("Modo inválido. Use 'multiclass' ou 'binary'.")
 
