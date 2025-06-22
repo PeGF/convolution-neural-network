@@ -4,7 +4,6 @@ import numpy as np
 import tensorflow as tf
 from keras.datasets import mnist, fashion_mnist
 from sklearn.model_selection import train_test_split
-from src.descriptors import extract_hog, extract_lbp, extract_haar
 from src.config import BINARY_CLASSES, RANDOM_SEED
 
 
@@ -82,53 +81,6 @@ def prepare_binary_data(class_a=BINARY_CLASSES[0], class_b=BINARY_CLASSES[1]):
     x_test = preprocess_images(x_test)
 
     return (x_train, y_train), (x_test, y_test)
-
-'''
-
-def load_data_with_descriptors(descriptor='hog', binary_classes=None):
-    Carrega o dataset MNIST e aplica o descritor escolhido.
-
-    Args:
-        descriptor (str): 'hog', 'lbp' ou 'haar'
-        binary_classes (tuple): Exemplo (0, 1) se for classificação binária
-
-    Returns:
-        X_train, X_test, y_train, y_test (arrays numpy)
-
-    (x_train, y_train), (x_test, y_test) = mnist.load_data()
-
-    if binary_classes is not None:
-        idx_train = np.isin(y_train, binary_classes)
-        idx_test = np.isin(y_test, binary_classes)
-        X_train = X_train[idx_train]
-        y_train = y_train[idx_train]
-        X_test = X_test[idx_test]
-        y_test = y_test[idx_test]
-
-        # Ajusta os labels para 0 e 1
-        y_train = (y_train == binary_classes[1]).astype(int)
-        y_test = (y_test == binary_classes[1]).astype(int)
-
-    # Normalização para 0-1 (necessário para alguns descritores)
-    x_train = x_train.astype("float32") / 255.0
-    x_test = x_test.astype("float32") / 255.0
-
-    # Aplicação do descritor escolhido
-    if descriptor == "hog":
-        x_train_feat = extract_hog(x_train)
-        x_test_feat = extract_hog(x_test)
-    elif descriptor == "lbp":
-        x_train_feat = extract_lbp(x_train)
-        x_test_feat = extract_lbp(x_test)
-    elif descriptor == "haar":
-        x_train_feat = extract_haar(x_train)
-        x_test_feat = extract_haar(x_test)
-    else:
-        raise ValueError("Descritor não reconhecido. Use 'hog', 'lbp' ou 'haar'.")
-
-    return (x_train_feat, y_train), (x_test_feat, y_test)
-
-'''
 
 def split_train_validation(x, y, validation_size=0.1):
     """

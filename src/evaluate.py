@@ -7,7 +7,7 @@ import seaborn as sns
 
 sns.set_theme(style="whitegrid")
 
-from src.config import OUTPUT_DIR, BATCH_SIZE, NUM_EPOCHS
+from src.config import OUTPUT_DIR, BATCH_SIZE, NUM_EPOCHS, CLASS_NAMES
 from src.data_loader import (
     prepare_multiclass_data,
     prepare_binary_data,
@@ -78,12 +78,14 @@ def evaluate_model(mode="multiclass", class_a=None, class_b=None):
         outputs = np.load(os.path.join(OUTPUT_DIR, f"{mode}_test_outputs.npz"))['outputs']
         # Para multiclasse, outputs têm shape (n, 10) de probabilidades
         y_pred = np.argmax(outputs, axis=1)
+        class_labels = CLASS_NAMES
     else:
         (_, _), (x_test, y_test_binary) = prepare_binary_data(class_a, class_b)
         outputs = np.load(os.path.join(OUTPUT_DIR, f"{mode}_test_outputs.npz"))['outputs']
         # Para binário, outputs têm shape (n, 1), threshold em 0.5
         y_pred = (outputs > 0.5).astype(int).squeeze()
         y_test = y_test_binary
+        class_labels = [CLASS_NAMES[class_a], CLASS_NAMES[class_b]]
 
     # Cálculo de acurácia geral
     acc = accuracy_score(y_test, y_pred)
@@ -92,7 +94,7 @@ def evaluate_model(mode="multiclass", class_a=None, class_b=None):
     cm = confusion_matrix(y_test, y_pred)
 
     # Geração de relatório de classificação
-    report = classification_report(y_test, y_pred)
+    report = classification_report(y_test, y_pred, target_names=class_labels)
 
     # Salvar métricas em arquivos
     with open(os.path.join(OUTPUT_DIR, f"{mode}_accuracy.txt"), 'w') as f:
@@ -103,7 +105,8 @@ def evaluate_model(mode="multiclass", class_a=None, class_b=None):
 
     # Plotar e salvar matriz de confusão
     plt.figure(figsize=(6, 5))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', linewidths=0.5, linecolor='gray')
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', linewidths=0.5, linecolor='gray',
+                xticklabels=class_labels, yticklabels=class_labels)
     plt.title(f'Matriz de Confusão ({mode})', fontsize=16)
     plt.xlabel('Predito', fontsize=14)
     plt.ylabel('Verdadeiro', fontsize=14)

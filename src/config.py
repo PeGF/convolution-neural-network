@@ -32,6 +32,10 @@ NUM_CLASSES_BINARY = 2  # Binário: 2 classes (sempre 2, obviamente)
 # 7 - Sneaker
 # 8 - Bag
 # 9 - Ankle boot
+CLASS_NAMES = [
+    "T-shirt/top", "Trouser", "Pullover", "Dress", "Coat",
+    "Sandal", "Shirt", "Sneaker", "Bag", "Ankle boot"
+]
 BINARY_CLASSES = (0, 6)
 
 # Diretórios de saída
